@@ -51,6 +51,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['text']['label'] = '';
   $handler->display->display_options['fields']['text']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['text']['alter']['path'] = '[text_1]';
+  $handler->display->display_options['fields']['text']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['text']['xpath_selector'] = 'title';
   $handler->display->display_options['fields']['text']['multiple'] = 0;

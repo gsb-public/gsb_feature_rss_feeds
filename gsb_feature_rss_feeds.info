@@ -1,7 +1,7 @@
 name = GSB Feature RSS Feeds
 core = 7.x
 package = GSB
-version = 7.x-3.0
+version = 7.x-3.1
 project = gsb_feature_rss_feeds
 dependencies[] = views
 dependencies[] = views_content
