@@ -77,7 +77,8 @@ function gsb_feature_rss_feeds_views_default_views() {
 
   /* Display: RSS Feed */
   $handler = $view->new_display('panel_pane', 'RSS Feed', 'rss_feed');
-  $handler->display->display_options['pane_category']['name'] = 'Content panes';
+  $handler->display->display_options['pane_title'] = 'RSS Feed';
+  $handler->display->display_options['pane_category']['name'] = 'Non-customizable Content Lists';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
