@@ -552,19 +552,6 @@ function gsb_feature_rss_feeds_views_default_views() {
       ),
     ),
   );
-  /* Field: Taxonomy term: PR Email */
-  $handler->display->display_options['fields']['field_pr_contact_email']['id'] = 'field_pr_contact_email';
-  $handler->display->display_options['fields']['field_pr_contact_email']['table'] = 'field_data_field_pr_contact_email';
-  $handler->display->display_options['fields']['field_pr_contact_email']['field'] = 'field_pr_contact_email';
-  $handler->display->display_options['fields']['field_pr_contact_email']['relationship'] = 'field_pr_contact_unlimited_tid';
-  $handler->display->display_options['fields']['field_pr_contact_email']['label'] = 'contact';
-  $handler->display->display_options['fields']['field_pr_contact_email']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Field: Field: Keywords */
   $handler->display->display_options['fields']['field_tag']['id'] = 'field_tag';
   $handler->display->display_options['fields']['field_tag']['table'] = 'field_data_field_tag';
