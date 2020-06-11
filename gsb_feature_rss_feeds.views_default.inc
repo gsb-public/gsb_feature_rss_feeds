@@ -33,8 +33,8 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'views_json';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
-  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['plaintext_output'] = 0;
+  $handler->display->display_options['style_options']['remove_newlines'] = 1;
   $handler->display->display_options['style_options']['jsonp_prefix'] = '';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['style_options']['translate_labels'] = 0;
@@ -182,14 +182,6 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Field: Keywords (field_tag) */
-  $handler->display->display_options['arguments']['field_tag_tid']['id'] = 'field_tag_tid';
-  $handler->display->display_options['arguments']['field_tag_tid']['table'] = 'field_data_field_tag';
-  $handler->display->display_options['arguments']['field_tag_tid']['field'] = 'field_tag_tid';
-  $handler->display->display_options['arguments']['field_tag_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_tag_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_tag_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_tag_tid']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -229,6 +221,8 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -320,6 +314,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['field_tag']['field'] = 'field_tag';
   $handler->display->display_options['fields']['field_tag']['label'] = 'tags';
   $handler->display->display_options['fields']['field_tag']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tag']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_tag']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -344,6 +339,79 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'voices' => 'voices',
   );
+  /* Filter criterion: Field: Keywords (field_tag) */
+  $handler->display->display_options['filters']['field_tag_tid']['id'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['table'] = 'field_data_field_tag';
+  $handler->display->display_options['filters']['field_tag_tid']['field'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_tag_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator_id'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['identifier'] = 'tags';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    71 => 0,
+    216 => 0,
+    31 => 0,
+    21 => 0,
+    151 => 0,
+    241 => 0,
+    61 => 0,
+    56 => 0,
+    66 => 0,
+    16 => 0,
+    171 => 0,
+    256 => 0,
+    326 => 0,
+    201 => 0,
+    221 => 0,
+    146 => 0,
+    246 => 0,
+    226 => 0,
+    36 => 0,
+    231 => 0,
+    41 => 0,
+    236 => 0,
+    91 => 0,
+    26 => 0,
+    136 => 0,
+    86 => 0,
+    96 => 0,
+    81 => 0,
+    106 => 0,
+    116 => 0,
+    51 => 0,
+    46 => 0,
+    121 => 0,
+    126 => 0,
+    131 => 0,
+    141 => 0,
+    156 => 0,
+    161 => 0,
+    166 => 0,
+    176 => 0,
+    181 => 0,
+    186 => 0,
+    191 => 0,
+    206 => 0,
+    211 => 0,
+    251 => 0,
+    261 => 0,
+    266 => 0,
+    271 => 0,
+    276 => 0,
+    281 => 0,
+    291 => 0,
+    296 => 0,
+    301 => 0,
+    101 => 0,
+    331 => 0,
+  );
+  $handler->display->display_options['filters']['field_tag_tid']['vocabulary'] = 'tag';
+  $handler->display->display_options['filters']['field_tag_tid']['error_message'] = FALSE;
   $handler->display->display_options['path'] = 'microsite/voices';
 
   /* Display: Clubs */
@@ -370,6 +438,8 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Field: Body */
   $handler->display->display_options['fields']['field_body']['id'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['table'] = 'field_data_field_body';
@@ -400,6 +470,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['field_tag']['field'] = 'field_tag';
   $handler->display->display_options['fields']['field_tag']['label'] = 'tags';
   $handler->display->display_options['fields']['field_tag']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tag']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_tag']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -424,15 +495,84 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'club' => 'club',
   );
+  /* Filter criterion: Field: Keywords (field_tag) */
+  $handler->display->display_options['filters']['field_tag_tid']['id'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['table'] = 'field_data_field_tag';
+  $handler->display->display_options['filters']['field_tag_tid']['field'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_tag_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator_id'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['identifier'] = 'tags';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    71 => 0,
+    216 => 0,
+    31 => 0,
+    21 => 0,
+    151 => 0,
+    241 => 0,
+    61 => 0,
+    56 => 0,
+    66 => 0,
+    16 => 0,
+    171 => 0,
+    256 => 0,
+    326 => 0,
+    201 => 0,
+    221 => 0,
+    146 => 0,
+    246 => 0,
+    226 => 0,
+    36 => 0,
+    231 => 0,
+    41 => 0,
+    236 => 0,
+    91 => 0,
+    26 => 0,
+    136 => 0,
+    86 => 0,
+    96 => 0,
+    81 => 0,
+    106 => 0,
+    116 => 0,
+    51 => 0,
+    46 => 0,
+    121 => 0,
+    126 => 0,
+    131 => 0,
+    141 => 0,
+    156 => 0,
+    161 => 0,
+    166 => 0,
+    176 => 0,
+    181 => 0,
+    186 => 0,
+    191 => 0,
+    206 => 0,
+    211 => 0,
+    251 => 0,
+    261 => 0,
+    266 => 0,
+    271 => 0,
+    276 => 0,
+    281 => 0,
+    291 => 0,
+    296 => 0,
+    301 => 0,
+    101 => 0,
+    331 => 0,
+  );
+  $handler->display->display_options['filters']['field_tag_tid']['vocabulary'] = 'tag';
+  $handler->display->display_options['filters']['field_tag_tid']['error_message'] = FALSE;
   $handler->display->display_options['path'] = 'microsite/clubs';
 
   /* Display: School Story */
   $handler = $view->new_display('page', 'School Story', 'school_story');
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: PR Contact (field_pr_contact_unlimited) */
-  $handler->display->display_options['relationships']['field_pr_contact_unlimited_tid']['id'] = 'field_pr_contact_unlimited_tid';
-  $handler->display->display_options['relationships']['field_pr_contact_unlimited_tid']['table'] = 'field_data_field_pr_contact_unlimited';
-  $handler->display->display_options['relationships']['field_pr_contact_unlimited_tid']['field'] = 'field_pr_contact_unlimited_tid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -445,6 +585,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
   $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
   $handler->display->display_options['fields']['field_date']['label'] = 'published';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_date']['settings'] = array(
     'format_type' => 'custom',
     'custom_date_format' => 'Y-m-d',
@@ -467,6 +608,9 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -484,6 +628,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['field_image_key_image']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_image_key_image']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_image_key_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_key_image']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_image_key_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image_key_image']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_image_key_image']['settings'] = array(
@@ -503,6 +648,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_image_key_image] ';
   $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = TRUE;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
@@ -544,7 +690,6 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['field_body']['field'] = 'field_body';
   $handler->display->display_options['fields']['field_body']['label'] = 'description';
   $handler->display->display_options['fields']['field_body']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_body']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_body']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -558,6 +703,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['field_tag']['field'] = 'field_tag';
   $handler->display->display_options['fields']['field_tag']['label'] = 'tags';
   $handler->display->display_options['fields']['field_tag']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tag']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_tag']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -566,6 +712,94 @@ function gsb_feature_rss_feeds_views_default_views() {
     ),
   );
   $handler->display->display_options['fields']['field_tag']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'school_story' => 'school_story',
+  );
+  /* Filter criterion: Field: Keywords (field_tag) */
+  $handler->display->display_options['filters']['field_tag_tid']['id'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['table'] = 'field_data_field_tag';
+  $handler->display->display_options['filters']['field_tag_tid']['field'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_tag_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator_id'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['identifier'] = 'tags';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    71 => 0,
+    216 => 0,
+    31 => 0,
+    21 => 0,
+    151 => 0,
+    241 => 0,
+    61 => 0,
+    56 => 0,
+    66 => 0,
+    16 => 0,
+    171 => 0,
+    256 => 0,
+    326 => 0,
+    201 => 0,
+    221 => 0,
+    146 => 0,
+    246 => 0,
+    226 => 0,
+    36 => 0,
+    231 => 0,
+    41 => 0,
+    236 => 0,
+    91 => 0,
+    26 => 0,
+    136 => 0,
+    86 => 0,
+    96 => 0,
+    81 => 0,
+    106 => 0,
+    116 => 0,
+    51 => 0,
+    46 => 0,
+    121 => 0,
+    126 => 0,
+    131 => 0,
+    141 => 0,
+    156 => 0,
+    161 => 0,
+    166 => 0,
+    176 => 0,
+    181 => 0,
+    186 => 0,
+    191 => 0,
+    206 => 0,
+    211 => 0,
+    251 => 0,
+    261 => 0,
+    266 => 0,
+    271 => 0,
+    276 => 0,
+    281 => 0,
+    291 => 0,
+    296 => 0,
+    301 => 0,
+    101 => 0,
+  );
+  $handler->display->display_options['filters']['field_tag_tid']['vocabulary'] = 'tag';
+  $handler->display->display_options['filters']['field_tag_tid']['error_message'] = FALSE;
   $handler->display->display_options['path'] = 'microsite/school-news';
 
   /* Display: Week in the Life */
@@ -592,6 +826,8 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -667,6 +903,7 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['fields']['field_tag']['field'] = 'field_tag';
   $handler->display->display_options['fields']['field_tag']['label'] = 'tags';
   $handler->display->display_options['fields']['field_tag']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tag']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_tag']['settings'] = array(
     'conditions' => array(
       0 => array(
@@ -691,6 +928,79 @@ function gsb_feature_rss_feeds_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'week_in_the_life' => 'week_in_the_life',
   );
+  /* Filter criterion: Field: Keywords (field_tag) */
+  $handler->display->display_options['filters']['field_tag_tid']['id'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['table'] = 'field_data_field_tag';
+  $handler->display->display_options['filters']['field_tag_tid']['field'] = 'field_tag_tid';
+  $handler->display->display_options['filters']['field_tag_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_tag_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator_id'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['operator'] = 'field_tag_tid_op';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['identifier'] = 'tags';
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_tag_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    71 => 0,
+    216 => 0,
+    31 => 0,
+    21 => 0,
+    151 => 0,
+    241 => 0,
+    61 => 0,
+    56 => 0,
+    66 => 0,
+    16 => 0,
+    171 => 0,
+    256 => 0,
+    326 => 0,
+    201 => 0,
+    221 => 0,
+    146 => 0,
+    246 => 0,
+    226 => 0,
+    36 => 0,
+    231 => 0,
+    41 => 0,
+    236 => 0,
+    91 => 0,
+    26 => 0,
+    136 => 0,
+    86 => 0,
+    96 => 0,
+    81 => 0,
+    106 => 0,
+    116 => 0,
+    51 => 0,
+    46 => 0,
+    121 => 0,
+    126 => 0,
+    131 => 0,
+    141 => 0,
+    156 => 0,
+    161 => 0,
+    166 => 0,
+    176 => 0,
+    181 => 0,
+    186 => 0,
+    191 => 0,
+    206 => 0,
+    211 => 0,
+    251 => 0,
+    261 => 0,
+    266 => 0,
+    271 => 0,
+    276 => 0,
+    281 => 0,
+    291 => 0,
+    296 => 0,
+    301 => 0,
+    101 => 0,
+    331 => 0,
+  );
+  $handler->display->display_options['filters']['field_tag_tid']['vocabulary'] = 'tag';
+  $handler->display->display_options['filters']['field_tag_tid']['error_message'] = FALSE;
   $handler->display->display_options['path'] = 'microsite/witl';
   $export['mba_admit_feed'] = $view;
 
